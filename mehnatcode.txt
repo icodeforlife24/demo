@@ -1,0 +1,25 @@
+#include<simplecpp>
+bool isPalindrome(int n){
+    int n1=n,rev=0;
+    while(n1>0){
+      int i=n1%10;
+      n1=n1/10;
+      rev=rev*10+i;}
+    if(rev==n){return true;}
+    else{return false;}}
+int largestPalindromeSubnumber(int &n){
+    int finall=-1;
+    while(n>0){
+        int count=(floor(log10(n))+1);
+        for(int i=0;i<=count;i++){
+        int a=n%int(pow(10,i));
+        if(isPalindrome(a)&&finall<a){finall=a;}}
+        n=n/10;
+    }
+    return finall;
+}
+main_program{
+    int input;
+    cin>>input;
+    cout<<largestPalindromeSubnumber(input);
+}
